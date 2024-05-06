@@ -1,0 +1,39 @@
+.title {
+  font-family: Rubik, sans-serif;
+  font-size: clamp(2rem, 10vw, 6rem);
+  color: var(--title);
+  cursor: pointer;
+
+  margin: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    animation-name: glitchAnimation;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes glitchAnimation {
+  0% {
+    font-family: Rubik Glitch, sans-serif;
+    color: var(--title-glitch-second);
+  }
+  50% {
+    font-family: Rubik Glitch, sans-serif;
+    color: var(--title-glitch-first);
+  }
+  60% {
+    font-family: Rubik, sans-serif;
+    color: var(--title);
+  }
+  75% {
+    font-family: Rubik Glitch, sans-serif;
+    color: var(--title-glitch-first);
+  }
+  100% {
+    font-family: Rubik, sans-serif;
+    color: var(--title);
+  }
+}
