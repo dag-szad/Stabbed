@@ -1,0 +1,14 @@
+.logo {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+}
+
+.light {
+    background-color: var(--background-dark-primary);
+}
+
+.dark {
+    background-color: var(--background-dark-secondary);
+}
