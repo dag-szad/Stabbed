@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Earring.module.scss'
 
-const Earring = () => {
+const Earring = ({earring, index}) => {
   const [isDragging, setIsDragging] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -47,8 +47,8 @@ const Earring = () => {
   }
 
   return (
-    <p style={style} className={styles.earring} onMouseDown={handleMouseDown}>
-      🟡
+    <p style={style} className={styles.earring} onMouseDown={handleMouseDown} key={index}>
+      {earring}
     </p>
   )
 }
