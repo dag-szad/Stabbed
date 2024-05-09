@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+
+  list-style: none;
+  padding: 0;
+}
+
+.icon {
+  display: block;
+}
