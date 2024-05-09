@@ -1,0 +1,22 @@
+.logoName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name {
+  font-family: Rubik, sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+
+  margin: 0;
+}
+
+.light {
+  color: var(--text-light-primary);
+}
+
+.dark {
+  color: var(--text-dark-primary);
+}
