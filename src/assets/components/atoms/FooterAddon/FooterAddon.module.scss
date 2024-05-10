@@ -3,6 +3,8 @@
 
     font-family: Montserrat, sans-serif;
     font-size: clamp(0.625rem, 1vw, 0.75rem);
-
+    color: var(--text-light-primary);
+    text-align: center;
+    padding: 5px;
     margin: 0;
 }
