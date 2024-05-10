@@ -1,0 +1,43 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    font-family: Montserrat, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.header {
+  gap: 60px;
+}
+
+.footer {
+  gap: 20px;
+}
+
+.light {
+  color: var(--text-light-primary);
+  transition: color 0.3s ease-in-out;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--text-light-secondary);
+  }
+}
+
+.dark {
+  color: var(--text-dark-primary);
+  transition: color 0.3s ease-in-out;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--accent-first);
+  }
+}
