@@ -6,7 +6,7 @@
 
   border-bottom: 1px solid var(--footer-border);
 
-  padding: 40px 100px;
+  padding: 40px 50px;
 
   display: flex;
   flex-direction: row;
@@ -16,6 +16,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1 0 auto;
+    max-width: 33%;
   }
 
   &__subtitle {
@@ -32,6 +34,7 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    flex-basis: 2;
   }
 
   &__copyright {
@@ -61,5 +64,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-end;
+    flex: 1 0 auto;
+    max-width: 33%;
   }
 }
