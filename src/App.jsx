@@ -7,12 +7,12 @@ import { EarringSelector } from './assets/visualizer/earrings/EarringSelector.js
 import './App.scss'
 
 function App() {
-  const [base, setBase] = useState('ear');
+  const [selectedBase, setSelectedBase] = useState('ear');
   const [selectedEarrings, setSelectedEarrings] = useState([]);
 
   const changeBase = (newBase) => {
-    setBase(newBase);
-  }
+    setSelectedBase({ ...newBase, fileWidth: newBase.width, fileHeight: newBase.height });
+  };
 
   const addEarring = (earring) => {
     setSelectedEarrings([...selectedEarrings, earring])
@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <BaseSelector changeBase={changeBase} />
-      <Bases id="dropspace" selectedBase={base} />
+      <Bases id="dropspace" selectedBase={selectedBase} />
 
       <EarringSelector addEarring={addEarring}/>
       {selectedEarrings.map((earring, index) => (
