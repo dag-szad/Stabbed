@@ -1,0 +1,11 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+}
