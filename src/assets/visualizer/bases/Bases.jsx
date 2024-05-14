@@ -1,39 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react'
+import styles from './Bases.module.scss'
 
-const Bases = ({ selectedBase, fileWidth, fileHeight }) => {
-  let base = '';
-  let width = fileWidth;
-  let height = fileHeight;
-  // console.log(fileWidth)
+const Bases = ({ selectedBase, isRotated, setContainerDimensions }) => {
+  const imgRef = useRef(null)
 
-  if (selectedBase.url) {
-    base = selectedBase.url;
-  } else {
-    switch (selectedBase) {
-      case 'ear':
-        base = `src/assets/visualizer/bases/${selectedBase}.png`;
-        width = 400;
-        height = 500;
-        break;
-      case 'lips':
-      case 'nose':
-        base = `src/assets/visualizer/bases/${selectedBase}.png`;
-        width = 500;
-        height = 400;
-        break;
-      default:
-        base = selectedBase;
-        break;
+  useEffect(() => {
+    if (imgRef.current) {
+      const { width, height } = imgRef.current.getBoundingClientRect()
+      setContainerDimensions({ width, height })
+    }
+  }, [selectedBase, setContainerDimensions])
+
+  const renderBase = () => {
+    if (selectedBase.type === 'custom') {
+      return selectedBase.url
+    } else {
+      return `src/assets/visualizer/bases/${selectedBase.type}.png`
     }
   }
 
-  return (
-    <img
-      src={base}
-      alt="base for piercings"
-      style={{ width: width, height: height }}
-    />
-  );
-};
+  const source = renderBase()
 
-export { Bases };
+  const classes = `${styles.img} ${isRotated ? styles.rotated : ''}`
+
+  return (
+    <div className={styles.dropspace}>
+      <img ref={imgRef} src={source} alt="Piecing base" className={classes} />
+    </div>
+  )
+}
+
+export { Bases }
