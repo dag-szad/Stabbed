@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Earring.module.scss'
 
-const Earring = ({earring, index}) => {
+const Earring = ({ earring, index, isRotated, containerDimensions }) => {
   const [isDragging, setIsDragging] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -39,15 +39,34 @@ const Earring = ({earring, index}) => {
     })
   }
 
+  const computeRotatedPosition = () => {
+    if (!isRotated) return position
+
+    const { width } = containerDimensions
+    const centerX = width / 2
+
+    return {
+      x: width - position.x,
+      y: position.y,
+    }
+  }
+
+  const rotatedPosition = computeRotatedPosition()
+
   const style = {
     position: 'absolute',
-    top: `${position.y}px`,
-    left: `${position.x}px`,
+    top: `${rotatedPosition.y}px`,
+    left: `${rotatedPosition.x}px`,
     cursor: isDragging ? 'grabbing' : 'grab',
   }
 
   return (
-    <p style={style} className={styles.earring} onMouseDown={handleMouseDown} key={index}>
+    <p
+      style={style}
+      className={styles.earring}
+      onMouseDown={handleMouseDown}
+      key={index}
+    >
       {earring}
     </p>
   )
