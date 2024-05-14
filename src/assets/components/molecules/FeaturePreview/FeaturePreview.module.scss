@@ -4,12 +4,12 @@
   gap: 30px;
 
   width: 45%;
-  max-width: 600px;
+  max-width: 500px;
 
   &__image {
     background-color: var(--background-dark-primary);
     border-radius: 25px;
-    height: 200px;
+    height: 150px;
   }
 
   &__title {
@@ -19,8 +19,15 @@
     margin: 0;
   }
 
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   &__text {
     font-family: Montserrat, sans-serif;
+    line-height: 1.5;
     font-weight: 400;
     font-size: 1rem;
     margin: 0;

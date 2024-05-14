@@ -5,7 +5,11 @@ const FeaturePreview = ({ photo, alt, title, description }) => {
     <div className={styles.feature}>
       <img src={photo} alt={alt} className={styles.feature__image} />
       <h3 className={styles.feature__title}>{title}</h3>
-      <p className={styles.feature__text}>{description}</p>
+      <div className={styles.feature__description}>
+        {description.map((line, index) => (
+          <p key={index} className={styles.feature__text}>{line}</p>
+        ))}
+      </div>
     </div>
   )
 }
