@@ -10,10 +10,21 @@ const Earring = ({ earring, index, isRotated, containerDimensions }) => {
     const handleMouseMove = (event) => {
       if (!isDragging) return
 
-      setPosition({
-        x: event.clientX - offset.x,
-        y: event.clientY - offset.y,
-      })
+      const rotatedX = event.clientX - offset.x
+      const rotatedY = event.clientY - offset.y
+
+      const { width, height } = containerDimensions
+      const rotatedPosition = isRotated
+        ? {
+            x: width - rotatedX,
+            y: rotatedY,
+          }
+        : {
+            x: rotatedX,
+            y: rotatedY,
+          }
+
+      setPosition(rotatedPosition)
     }
 
     const handleMouseUp = () => {
@@ -29,29 +40,23 @@ const Earring = ({ earring, index, isRotated, containerDimensions }) => {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [isDragging, offset])
+  }, [isDragging, offset, isRotated, containerDimensions])
 
   const handleMouseDown = (event) => {
     setIsDragging(true)
-    setOffset({
-      x: event.clientX - position.x,
-      y: event.clientY - position.y,
-    })
+
+    const offsetX = event.clientX - rotatedPosition.x
+    const offsetY = event.clientY - rotatedPosition.y
+
+    setOffset({ x: offsetX, y: offsetY })
   }
 
-  const computeRotatedPosition = () => {
-    if (!isRotated) return position
-
-    const { width } = containerDimensions
-    const centerX = width / 2
-
-    return {
-      x: width - position.x,
-      y: position.y,
-    }
-  }
-
-  const rotatedPosition = computeRotatedPosition()
+  const rotatedPosition = isRotated
+    ? {
+        x: containerDimensions.width - position.x,
+        y: position.y,
+      }
+    : position
 
   const style = {
     position: 'absolute',
