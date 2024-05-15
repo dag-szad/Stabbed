@@ -5,10 +5,10 @@ const LogoWithName = ({ colorVariant }) => {
   const classes = `${styles.name} ${styles[colorVariant]}`
 
   return (
-    <div className={styles.logoName}>
+    <a href="/" className={styles.logoName}>
       <Logo colorVariant={colorVariant} />
       <h2 className={classes}>Stabbed</h2>
-    </div>
+    </a>
   )
 }
 
